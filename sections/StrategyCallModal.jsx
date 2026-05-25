@@ -33,8 +33,8 @@ export default function StrategyCallModal({ open, setOpen }) {
         callWindow,
         projectDetails,
       };
-
-      const response = await fetch("/api/strategy-call", {
+      console.log(formData);
+      const response = await fetch("/api/schedule-consultation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,10 +42,13 @@ export default function StrategyCallModal({ open, setOpen }) {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        throw new Error(data.message || "Something went wrong");
       }
 
+      // SUCCESS
       setSuccess(true);
 
       // RESET FORM
@@ -59,14 +62,15 @@ export default function StrategyCallModal({ open, setOpen }) {
       setCallWindow("Morning (8AM - 11AM)");
       setProjectDetails("");
 
-      // CLOSE MODAL AFTER SUCCESS
+      // CLOSE MODAL
       setTimeout(() => {
         setOpen(false);
         setSuccess(false);
       }, 2500);
     } catch (error) {
       console.error(error);
-      alert("Failed to submit form.");
+
+      alert(error.message || "Failed to submit consultation request.");
     } finally {
       setLoading(false);
     }
@@ -226,21 +230,24 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                       <input
                         type="text"
+                        required
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         placeholder="John Carter"
                         className="
-                          w-full
-                          h-13
-                          md:h-14
-                          rounded-2xl
-                          bg-white/[0.03]
-                          border border-white/10
-                          px-5
-                          text-white
-                          placeholder:text-white/25
-                          outline-none
-                          focus:border-[#C8A15A]/50
-                          transition-all
-                        "
+        w-full
+        h-13
+        md:h-14
+        rounded-2xl
+        bg-white/[0.03]
+        border border-white/10
+        px-5
+        text-white
+        placeholder:text-white/25
+        outline-none
+        focus:border-[#C8A15A]/50
+        transition-all
+      "
                       />
                     </div>
 
@@ -252,21 +259,24 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                       <input
                         type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@example.com"
                         className="
-                          w-full
-                          h-13
-                          md:h-14
-                          rounded-2xl
-                          bg-white/[0.03]
-                          border border-white/10
-                          px-5
-                          text-white
-                          placeholder:text-white/25
-                          outline-none
-                          focus:border-[#C8A15A]/50
-                          transition-all
-                        "
+        w-full
+        h-13
+        md:h-14
+        rounded-2xl
+        bg-white/[0.03]
+        border border-white/10
+        px-5
+        text-white
+        placeholder:text-white/25
+        outline-none
+        focus:border-[#C8A15A]/50
+        transition-all
+      "
                       />
                     </div>
 
@@ -284,22 +294,24 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                         <input
                           type="text"
+                          value={company}
+                          onChange={(e) => setCompany(e.target.value)}
                           placeholder="Luxury Real Estate Group"
                           className="
-                            w-full
-                            h-13
-                            md:h-14
-                            rounded-2xl
-                            bg-white/[0.03]
-                            border border-white/10
-                            pl-14
-                            pr-5
-                            text-white
-                            placeholder:text-white/25
-                            outline-none
-                            focus:border-[#C8A15A]/50
-                            transition-all
-                          "
+          w-full
+          h-13
+          md:h-14
+          rounded-2xl
+          bg-white/[0.03]
+          border border-white/10
+          pl-14
+          pr-5
+          text-white
+          placeholder:text-white/25
+          outline-none
+          focus:border-[#C8A15A]/50
+          transition-all
+        "
                         />
                       </div>
                     </div>
@@ -311,19 +323,21 @@ export default function StrategyCallModal({ open, setOpen }) {
                       </label>
 
                       <select
+                        value={service}
+                        onChange={(e) => setService(e.target.value)}
                         className="
-                          w-full
-                          h-13
-                          md:h-14
-                          rounded-2xl
-                          bg-white/[0.03]
-                          border border-white/10
-                          px-5
-                          text-white
-                          outline-none
-                          focus:border-[#C8A15A]/50
-                          transition-all
-                        "
+        w-full
+        h-13
+        md:h-14
+        rounded-2xl
+        bg-white/[0.03]
+        border border-white/10
+        px-5
+        text-white
+        outline-none
+        focus:border-[#C8A15A]/50
+        transition-all
+      "
                       >
                         <option className="bg-black">Luxury Real Estate</option>
 
@@ -352,20 +366,22 @@ export default function StrategyCallModal({ open, setOpen }) {
                         />
 
                         <select
+                          value={budget}
+                          onChange={(e) => setBudget(e.target.value)}
                           className="
-                            w-full
-                            h-13
-                            md:h-14
-                            rounded-2xl
-                            bg-white/[0.03]
-                            border border-white/10
-                            pl-14
-                            pr-5
-                            text-white
-                            outline-none
-                            focus:border-[#C8A15A]/50
-                            transition-all
-                          "
+          w-full
+          h-13
+          md:h-14
+          rounded-2xl
+          bg-white/[0.03]
+          border border-white/10
+          pl-14
+          pr-5
+          text-white
+          outline-none
+          focus:border-[#C8A15A]/50
+          transition-all
+        "
                         >
                           <option className="bg-black">$500 - $1,500</option>
 
@@ -388,19 +404,21 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                         <input
                           type="date"
+                          value={preferredDate}
+                          onChange={(e) => setPreferredDate(e.target.value)}
                           className="
-                            w-full
-                            h-13
-                            md:h-14
-                            rounded-2xl
-                            bg-white/[0.03]
-                            border border-white/10
-                            px-5
-                            text-white
-                            outline-none
-                            focus:border-[#C8A15A]/50
-                            transition-all
-                          "
+          w-full
+          h-13
+          md:h-14
+          rounded-2xl
+          bg-white/[0.03]
+          border border-white/10
+          px-5
+          text-white
+          outline-none
+          focus:border-[#C8A15A]/50
+          transition-all
+        "
                         />
                       </div>
 
@@ -411,19 +429,21 @@ export default function StrategyCallModal({ open, setOpen }) {
                         </label>
 
                         <select
+                          value={timezone}
+                          onChange={(e) => setTimezone(e.target.value)}
                           className="
-                            w-full
-                            h-13
-                            md:h-14
-                            rounded-2xl
-                            bg-white/[0.03]
-                            border border-white/10
-                            px-5
-                            text-white
-                            outline-none
-                            focus:border-[#C8A15A]/50
-                            transition-all
-                          "
+          w-full
+          h-13
+          md:h-14
+          rounded-2xl
+          bg-white/[0.03]
+          border border-white/10
+          px-5
+          text-white
+          outline-none
+          focus:border-[#C8A15A]/50
+          transition-all
+        "
                         >
                           <option className="bg-black">
                             Eastern Time (ET)
@@ -451,19 +471,21 @@ export default function StrategyCallModal({ open, setOpen }) {
                       </label>
 
                       <select
+                        value={callWindow}
+                        onChange={(e) => setCallWindow(e.target.value)}
                         className="
-                          w-full
-                          h-13
-                          md:h-14
-                          rounded-2xl
-                          bg-white/[0.03]
-                          border border-white/10
-                          px-5
-                          text-white
-                          outline-none
-                          focus:border-[#C8A15A]/50
-                          transition-all
-                        "
+        w-full
+        h-13
+        md:h-14
+        rounded-2xl
+        bg-white/[0.03]
+        border border-white/10
+        px-5
+        text-white
+        outline-none
+        focus:border-[#C8A15A]/50
+        transition-all
+      "
                       >
                         <option className="bg-black">
                           Morning (8AM - 11AM)
@@ -491,50 +513,73 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                       <textarea
                         rows={4}
+                        value={projectDetails}
+                        onChange={(e) => setProjectDetails(e.target.value)}
                         placeholder="Tell us about your project, property, goals, or creative vision..."
                         className="
-                          w-full
-                          rounded-2xl
-                          bg-white/[0.03]
-                          border border-white/10
-                          px-5
-                          py-4
-                          text-white
-                          placeholder:text-white/25
-                          outline-none
-                          resize-none
-                          focus:border-[#C8A15A]/50
-                          transition-all
-                        "
+        w-full
+        rounded-2xl
+        bg-white/[0.03]
+        border border-white/10
+        px-5
+        py-4
+        text-white
+        placeholder:text-white/25
+        outline-none
+        resize-none
+        focus:border-[#C8A15A]/50
+        transition-all
+      "
                       />
                     </div>
 
                     {/* BUTTON */}
                     <motion.button
+                      type="submit"
+                      disabled={loading}
                       whileHover={{
-                        scale: 1.01,
+                        scale: loading ? 1 : 1.01,
                       }}
                       whileTap={{
-                        scale: 0.98,
+                        scale: loading ? 1 : 0.98,
                       }}
                       className="
-                        w-full
-                        h-13
-                        md:h-14
-                        rounded-2xl
-                        bg-[#C8A15A]
-                        text-black
-                        uppercase
-                        tracking-[0.2em]
-                        text-[11px]
-                        font-bold
-                        hover:bg-[#d6af69]
-                        transition-all
-                        duration-300
-                      "
+      w-full
+      h-13
+      md:h-14
+      rounded-2xl
+      bg-[#C8A15A]
+      text-black
+      uppercase
+      tracking-[0.2em]
+      text-[11px]
+      font-bold
+      hover:bg-[#d6af69]
+      transition-all
+      duration-300
+      disabled:opacity-60
+    "
                     >
-                      Book Strategy Call
+                      {loading ? "Submitting..." : "Book Strategy Call"}
                     </motion.button>
+
+                    {/* SUCCESS */}
+                    {success && (
+                      <div
+                        className="
+        rounded-2xl
+        border border-green-500/20
+        bg-green-500/10
+        px-4
+        py-4
+        text-center
+        text-green-400
+        text-sm
+      "
+                      >
+                        Consultation request submitted successfully.
+                      </div>
+                    )}
 
                     {/* NOTE */}
                     <p className="text-center text-white/35 text-[11px] leading-6">

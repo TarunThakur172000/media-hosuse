@@ -3,18 +3,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
-import axios from "axios";
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "",
+    fullName: "",
     email: "",
-    project: "",
+    serviceType: "",
     message: "",
   });
 
   const [loading, setLoading] = useState(false);
 
+  const [success, setSuccess] = useState(false);
+
+  // HANDLE INPUT CHANGE
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -22,25 +24,52 @@ export default function Contact() {
     });
   };
 
-  const submit = async (e) => {
+  // SUBMIT
+  const handleCustomQuoteSubmit = async (e) => {
     e.preventDefault();
 
+    // VALIDATION
+    if (!form.fullName || !form.email || !form.serviceType) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      setLoading(true);
+      const response = await fetch("/api/custom-quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-      await axios.post("http://localhost:5000/api/contact", form);
+      const data = await response.json();
 
-      alert("Inquiry submitted successfully.");
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
 
+      // SUCCESS
+      setSuccess(true);
+
+      // RESET FORM
       setForm({
-        name: "",
+        fullName: "",
         email: "",
-        project: "",
+        serviceType: "",
         message: "",
       });
+
+      // HIDE SUCCESS
+      setTimeout(() => {
+        setSuccess(false);
+      }, 2500);
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong.");
+      console.error(error);
+
+      alert(error.message || "Failed to submit custom quote request.");
     } finally {
       setLoading(false);
     }
@@ -89,7 +118,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            onSubmit={submit}
+            onSubmit={handleCustomQuoteSubmit}
             className="rounded-[2.5rem] border border-white/10 bg-[#111111] p-8 md:p-12"
           >
             <div className="grid md:grid-cols-2 gap-6">
@@ -101,8 +130,8 @@ export default function Contact() {
 
                 <input
                   type="text"
-                  name="name"
-                  value={form.name}
+                  name="fullName"
+                  value={form.fullName}
                   onChange={handleChange}
                   required
                   placeholder="John Carter"
@@ -135,16 +164,22 @@ export default function Contact() {
               </label>
 
               <select
-                name="project"
-                value={form.project}
+                name="serviceType"
+                value={form.serviceType}
                 onChange={handleChange}
+                required
                 className="w-full bg-black border border-white/10 rounded-2xl px-5 py-5 text-white outline-none focus:border-[#C8A15A]/40 transition-all duration-500"
               >
                 <option value="">Select Service</option>
+
                 <option>Luxury Real Estate</option>
+
                 <option>Automotive Cinematics</option>
+
                 <option>Drone / Aerial</option>
+
                 <option>Branding Content</option>
+
                 <option>Social Media Reels</option>
               </select>
             </div>
@@ -168,17 +203,54 @@ export default function Contact() {
 
             {/* BUTTON */}
             <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              type="submit"
+              whileHover={{
+                scale: loading ? 1 : 1.03,
+              }}
+              whileTap={{
+                scale: loading ? 1 : 0.97,
+              }}
               disabled={loading}
-              className="group mt-8 bg-[#C8A15A] text-black px-8 py-5 rounded-full uppercase tracking-[0.18em] text-xs font-bold"
+              className="
+                group
+                mt-8
+                bg-[#C8A15A]
+                text-black
+                px-8
+                py-5
+                rounded-full
+                uppercase
+                tracking-[0.18em]
+                text-xs
+                font-bold
+                disabled:opacity-60
+              "
             >
-              <span className="flex items-center gap-3" id="custom_quote">
+              <span className="flex items-center gap-3">
                 {loading ? "Submitting..." : "Request A Custom Quote"}
 
                 <ArrowUpRight size={16} />
               </span>
             </motion.button>
+
+            {/* SUCCESS */}
+            {success && (
+              <div
+                className="
+                  mt-5
+                  rounded-2xl
+                  border border-green-500/20
+                  bg-green-500/10
+                  px-5
+                  py-4
+                  text-center
+                  text-green-400
+                  text-sm
+                "
+              >
+                Custom quote request submitted successfully.
+              </div>
+            )}
           </motion.form>
 
           {/* RIGHT SIDE */}
