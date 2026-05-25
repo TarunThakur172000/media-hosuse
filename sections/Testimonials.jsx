@@ -6,21 +6,21 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Luxury Real Estate Group",
-    role: "Real Estate Branding",
+    role: "Real Estate Media",
     review:
-      "The visual quality completely transformed how our listings were perceived online. The cinematic presentation elevated the entire brand experience.",
+      "The quality of the visuals changed the way our listings felt online. Everything looked more polished, more premium, and far more engaging for buyers.",
   },
   {
     name: "Velocity Automotive",
-    role: "Automotive Campaign",
+    role: "Automotive Production",
     review:
-      "HIGH DESERT MEDIA delivered a level of production that felt closer to a luxury commercial than traditional content creation.",
+      "The team understood exactly how to capture the emotion and presence of the vehicles. The final content felt cinematic without looking overproduced.",
   },
   {
     name: "Modern Stay Collection",
-    role: "STR Media",
+    role: "STR & Hospitality",
     review:
-      "The content immediately improved engagement across our platforms and gave the properties a far more premium presentation.",
+      "Professional, creative, and easy to work with. The content gave our properties a much stronger visual identity across Airbnb and social media.",
   },
 ];
 
@@ -45,13 +45,12 @@ export default function Testimonials() {
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[1] tracking-[0.06em] text-[#F5F2EC] max-w-4xl">
               Trusted By
               <br />
-              Brands That
               <span className="text-[#C8A15A] italic font-medium normal-case tracking-normal">
                 {" "}
-                Value
+                MODERN
               </span>
               <br />
-              Premium Perception.
+              BRAND
             </h2>
           </div>
 
@@ -63,8 +62,8 @@ export default function Testimonials() {
               </p>
 
               <p className="text-white/60 leading-8 text-sm md:text-base">
-                Strategic cinematic content designed to elevate perception,
-                strengthen positioning, and create a luxury digital presence.
+                Creative partnerships built on trust, quality, and cinematic
+                storytelling that delivers impact.
               </p>
             </div>
           </div>

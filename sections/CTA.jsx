@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-export default function CTA() {
+export default function CTA({ setOpenModal }) {
   return (
     <section className="relative py-32 md:py-40 px-6 md:px-10 bg-black overflow-hidden">
       {/* BACKGROUND GLOW */}
@@ -32,19 +32,19 @@ export default function CTA() {
 
         {/* TITLE */}
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-[0.08em] text-[#F5F2EC] leading-tight max-w-4xl mx-auto">
-          Cinematic Media
+          READY TO
           <br />
-          For Brands That
+          ELEVATE
           <span className="text-[#C8A15A] italic font-medium normal-case tracking-normal">
             {" "}
-            Value Perception
+            YOUR BRAND?
           </span>
         </h2>
 
         {/* DESCRIPTION */}
         <p className="mt-8 text-white/55 leading-8 text-sm md:text-base max-w-2xl mx-auto">
-          Strategic visual storytelling engineered to elevate positioning,
-          strengthen digital presence, and create premium brand perception.
+          Cinematic content crafted to help modern brands stand out, capture
+          attention, and create lasting impact.
         </p>
 
         {/* BUTTONS */}
@@ -53,6 +53,7 @@ export default function CTA() {
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
+            onClick={() => setOpenModal(true)}
             className="group relative overflow-hidden bg-[#C8A15A] text-black px-8 py-5 rounded-full uppercase tracking-[0.2em] text-xs font-bold min-w-[240px]"
           >
             <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -64,13 +65,15 @@ export default function CTA() {
           </motion.button>
 
           {/* SECONDARY */}
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="border border-white/15 hover:border-[#C8A15A]/50 hover:bg-white/5 transition-all duration-500 text-[#F5F2EC] px-8 py-5 rounded-full uppercase tracking-[0.2em] text-xs font-semibold min-w-[240px]"
-          >
-            Get Custom Quote
-          </motion.button>
+          <a href="#contact">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="border border-white/15 hover:border-[#C8A15A]/50 hover:bg-white/5 transition-all duration-500 text-[#F5F2EC] px-8 py-5 rounded-full uppercase tracking-[0.2em] text-xs font-semibold min-w-[240px]"
+            >
+              Get Custom Quote
+            </motion.button>
+          </a>
         </div>
       </motion.div>
     </section>

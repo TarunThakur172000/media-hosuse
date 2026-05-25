@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -48,15 +48,12 @@ export default function Portfolio() {
             </div>
 
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[1] tracking-[0.06em] text-[#F5F2EC] max-w-5xl">
-              Cinematic Work
+              Cinematic
               <br />
-              Built For
               <span className="text-[#C8A15A] italic font-medium normal-case tracking-normal">
                 {" "}
-                Premium
+                STORYTELLING
               </span>
-              <br />
-              Brand Perception.
             </h2>
           </div>
 
@@ -149,6 +146,31 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </div>
+      </div>
+      {/* VIEW MORE BUTTON */}
+      <div className="flex justify-center mt-20">
+        <Link href="/portfolio">
+          <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative overflow-hidden px-10 py-5 rounded-full border border-[#C8A15A]/30 bg-black/40 backdrop-blur-xl uppercase tracking-[0.3em] text-xs text-[#F5F2EC] hover:border-[#C8A15A] transition-all duration-500"
+          >
+            {/* GOLD HOVER */}
+            <span className="absolute inset-0 bg-[#C8A15A] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+
+            <span className="relative z-10 flex items-center gap-3 group-hover:text-black transition-colors duration-500">
+              View More Projects
+              <ArrowUpRight
+                size={16}
+                className="group-hover:rotate-45 transition-transform duration-500"
+              />
+            </span>
+          </motion.button>
+        </Link>
       </div>
     </section>
   );

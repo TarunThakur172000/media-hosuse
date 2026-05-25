@@ -1,104 +1,367 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, Send, X } from "lucide-react";
+import { Bot, X, ArrowRight, CalendarDays, Phone } from "lucide-react";
 
-const aiResponses = {
-  pricing:
-    "HDM pricing depends on property scale, deliverables, drone coverage, and production complexity. Luxury cinematic packages are customized per project.",
+const flows = {
+  // MAIN MENU
+  main: {
+    message: "What can we help you with today?",
+    options: [
+      {
+        label: "📅 Book a Shoot / Check Availability",
+        next: "booking",
+      },
+      {
+        label: "💰 View Pricing & Media Packages",
+        next: "pricing",
+      },
+      {
+        label: "📁 See Agent Brand Video Examples",
+        next: "brandVideos",
+      },
+      {
+        label: "📞 Chat With a Human",
+        next: "human",
+      },
+      {
+        label: "⚡ Speed & Logistics",
+        next: "logistics",
+      },
 
-  drone:
-    "Yes — HDM provides FAA-compliant aerial cinematography with cinematic drone movement engineered for luxury real estate and automotive visuals.",
+      {
+        label: "🤝 Getting Started & ROI",
+        next: "roi",
+      },
+    ],
+  },
 
-  booking:
-    "You can schedule a strategy consultation directly with HDM. Most projects are onboarded within a rapid deployment workflow.",
+  // BOOKING FLOW
+  booking: {
+    message:
+      "HDM creates cinematic media for modern real estate professionals, luxury listings, and personal branding. What type of shoot are you interested in?",
+    options: [
+      {
+        label: "Personal Branding Shoot",
+        response:
+          "Personal branding shoots are designed to position agents with a premium modern presence through cinematic storytelling, lifestyle visuals, and social-first content.",
+      },
 
-  automotive:
-    "HDM specializes in cinematic automotive storytelling including launch visuals, rolling shots, luxury dealership media, and high-performance branding.",
+      {
+        label: "Luxury Listing Media",
+        response:
+          "HDM creates cinematic listing walkthroughs, aerial coverage, social edits, and premium visuals tailored for luxury real estate marketing.",
+      },
 
-  default:
-    "HDM AI is here to assist you with media strategy, pricing, production planning, and luxury content consultation.",
+      {
+        label: "Monthly Content Retainer",
+        response:
+          "Monthly retainer packages help agents stay consistent with short-form content, personal branding, listing media, and social media storytelling.",
+      },
+
+      {
+        label: "Check Availability",
+        consultation: true,
+      },
+    ],
+  },
+
+  // PRICING FLOW
+  pricing: {
+    message:
+      "Pricing depends on production scope, property size, travel, deliverables, and editing requirements.",
+    options: [
+      {
+        label: "Personal Branding Packages",
+        response:
+          "Branding packages typically include cinematic filming, multiple short-form edits, social content, lifestyle visuals, and creative direction.",
+      },
+
+      {
+        label: "Luxury Listing Packages",
+        response:
+          "Listing packages can include cinematic walkthroughs, aerial footage, photography, social media edits, and premium color grading.",
+      },
+
+      {
+        label: "Monthly Content Packages",
+        response:
+          "Monthly content retainers are built for agents who want consistent social media content and ongoing personal brand growth.",
+      },
+
+      {
+        label: "Request Custom Quote",
+        consultation: true,
+      },
+    ],
+  },
+
+  // BRAND VIDEO FLOW
+  brandVideos: {
+    message:
+      "HDM creates cinematic content designed to make agents look like the authority in their market.",
+    options: [
+      {
+        label: "What is included in an Agent Brand Video shoot?",
+        response:
+          "Agent branding shoots typically include cinematic filming, lifestyle visuals, social media edits, creative direction, and premium post-production tailored for modern real estate marketing.",
+      },
+
+      {
+        label:
+          "Do you create short-form content for Instagram Reels and TikTok?",
+        response:
+          "Yes — HDM creates short-form cinematic content optimized for Instagram Reels, TikTok, YouTube Shorts, and social engagement.",
+      },
+
+      {
+        label: "Can you help me script or plan my videos?",
+        response:
+          "Absolutely. HDM helps agents with creative direction, talking points, scene planning, scripting guidance, and natural on-camera flow.",
+      },
+
+      {
+        label: "Do you offer day-in-the-life or monthly content packages?",
+        response:
+          "Yes — HDM offers ongoing monthly content systems and lifestyle-focused shoots designed to keep your brand active consistently.",
+      },
+
+      {
+        label: "How long does a personal branding shoot take?",
+        response:
+          "Most branding shoots range from 2–6 hours depending on locations, deliverables, outfit changes, and content complexity.",
+      },
+    ],
+  },
+
+  // LISTING MEDIA FLOW
+  listingMedia: {
+    message:
+      "HDM provides both cinematic personal branding and luxury listing media.",
+    options: [
+      {
+        label: "Do you shoot property walkthroughs and listing photos?",
+        response:
+          "Yes — HDM provides cinematic walkthrough videos, listing photography, aerial media, social edits, and branding-focused property content.",
+      },
+
+      {
+        label: "Do you offer drone/aerial footage for luxury properties?",
+        response:
+          "Yes — FAA-compliant aerial cinematography is available for luxury properties, architecture, landscapes, and large estates.",
+      },
+
+      {
+        label: "Can you create a video that highlights both me and my listing?",
+        response:
+          "Absolutely. Hybrid branding + listing videos are one of the most effective ways to market both the property and the agent together.",
+      },
+    ],
+  },
+
+  // LOGISTICS FLOW
+  logistics: {
+    message:
+      "Real estate moves fast — HDM is built around rapid production workflows and flexible scheduling.",
+    options: [
+      {
+        label: "What is your turnaround time for edited content?",
+        response:
+          "Most projects are delivered within 24–72 hours depending on production scope and editing requirements.",
+      },
+
+      {
+        label: "What should I wear or bring to a branding shoot?",
+        response:
+          "We recommend neutral luxury styling, clean wardrobe choices, and a few outfit variations that match your market and personal brand.",
+      },
+
+      {
+        label: "Do you travel outside the local area for shoots?",
+        response:
+          "Yes — HDM travels for select luxury projects, branding campaigns, and premium listing productions.",
+      },
+
+      {
+        label: "What happens if weather affects the shoot?",
+        response:
+          "Weather reschedules are handled flexibly. HDM works with clients to quickly secure the next available production date.",
+      },
+    ],
+  },
+
+  // ROI / GETTING STARTED
+  roi: {
+    message:
+      "HDM helps agents build stronger digital presence, visibility, and long-term brand authority.",
+    options: [
+      {
+        label: "How does onboarding work for new agents?",
+        response:
+          "The onboarding process includes a discovery call, creative planning, scheduling, content strategy, and production coordination.",
+      },
+
+      {
+        label: "I’m awkward on camera — can you help?",
+        response:
+          "Absolutely. Most agents are not professional presenters. HDM guides posture, movement, pacing, talking flow, and natural delivery throughout filming.",
+      },
+
+      {
+        label: "Do you offer monthly packages for social media?",
+        response:
+          "Yes — monthly content retainers are designed specifically for agents who want consistent visibility and ongoing content production.",
+      },
+
+      {
+        label: "Book Consultation",
+        consultation: true,
+      },
+    ],
+  },
+
+  // HUMAN FLOW
+  human: {
+    message:
+      "Our team can help you with scheduling, pricing, project planning, and creative direction.",
+    options: [
+      {
+        label: "Schedule Consultation",
+        consultation: true,
+      },
+    ],
+  },
 };
-
-export default function Concierge() {
+export default function Concierge({ setOpenModal }) {
   const [open, setOpen] = useState(false);
+
+  const [chat, setChat] = useState(flows.main);
+
   const [messages, setMessages] = useState([
     {
-      role: "ai",
-      text: "Hi — I’m HDM AI Concierge. How can I help you today?",
+      role: "bot",
+      text: flows.main.message,
     },
   ]);
 
-  const [input, setInput] = useState("");
-  const messagesEndRef = useRef(null);
-
-  const sendMessage = () => {
-    if (!input.trim()) return;
-
-    const userMessage = {
-      role: "user",
-      text: input,
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
-
-    const lower = input.toLowerCase();
-
-    let reply = aiResponses.default;
-
-    if (lower.includes("price")) reply = aiResponses.pricing;
-    else if (lower.includes("drone")) reply = aiResponses.drone;
-    else if (lower.includes("book")) reply = aiResponses.booking;
-    else if (lower.includes("car") || lower.includes("automotive"))
-      reply = aiResponses.automotive;
-
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "ai",
-          text: reply,
-        },
-      ]);
-    }, 900);
-
-    setInput("");
-  };
-
+  // PREVENT BODY SCROLL ON MOBILE
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, [messages]);
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
+
+  const handleOptionClick = (option) => {
+    // USER MESSAGE
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "user",
+        text: option.label,
+      },
+    ]);
+
+    // CONSULTATION BUTTON
+    if (option.consultation) {
+      setTimeout(() => {
+        setOpen(false);
+        setOpenModal(true);
+      }, 400);
+
+      return;
+    }
+
+    // RESPONSE FLOW
+    if (option.response) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            text: option.response,
+          },
+        ]);
+      }, 500);
+
+      return;
+    }
+
+    // NEXT FLOW
+    if (option.next) {
+      const nextFlow = flows[option.next];
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            text: nextFlow.message,
+          },
+        ]);
+
+        setChat(nextFlow);
+      }, 500);
+    }
+  };
 
   return (
     <>
-      {/* FLOATING AI BUTTON */}
+      {/* FLOATING BUTTON */}
       <motion.button
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 1,
+        }}
         onClick={() => setOpen((prev) => !prev)}
-        className="fixed bottom-6 right-6 z-[999] group"
+        className="fixed bottom-5 right-5 z-[999]"
       >
-        <div className="relative flex items-center gap-3 bg-[#111111] border border-[#C8A15A]/40 rounded-full px-5 py-3 shadow-2xl backdrop-blur-xl overflow-hidden">
+        <div
+          className="
+            relative
+            flex
+            items-center
+            gap-3
+            rounded-full
+            border border-[#C8A15A]/30
+            bg-[#111111]
+            px-4 md:px-5
+            py-3
+            shadow-2xl
+            backdrop-blur-xl
+            overflow-hidden
+            group
+          "
+        >
           {/* GLOW */}
           <div className="absolute inset-0 bg-[#C8A15A]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          {/* FACE */}
+          {/* ICON */}
           <div className="relative w-11 h-11 rounded-full bg-[#C8A15A] flex items-center justify-center">
             <Bot className="text-black" size={22} />
           </div>
 
           {/* TEXT */}
-          <div className="text-left hidden sm:block">
-            <p className="text-white text-sm font-semibold">HDM AI Concierge</p>
+          <div className="hidden sm:block text-left">
+            <p className="text-white text-sm font-semibold">HDM Concierge</p>
 
-            <span className="text-white/50 text-xs">Ask anything...</span>
+            <p className="text-white/50 text-xs">Quick answers & booking</p>
           </div>
 
-          {/* PING */}
+          {/* ONLINE */}
           <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-400 animate-ping" />
           <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-400" />
         </div>
@@ -108,23 +371,54 @@ export default function Concierge() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            transition={{ duration: 0.35 }}
-            className="fixed bottom-24 right-6 z-[999] w-[92vw] sm:w-[420px] h-[650px] rounded-[32px] overflow-hidden border border-white/10 bg-black/95 backdrop-blur-2xl shadow-[0_0_60px_rgba(0,0,0,0.8)]"
+            initial={{
+              opacity: 0,
+              y: 30,
+              scale: 0.96,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              scale: 0.96,
+            }}
+            transition={{
+              duration: 0.35,
+            }}
+            className="
+              fixed
+              bottom-24
+              right-4
+              md:right-6
+              z-[999]
+              w-[calc(100vw-32px)]
+              sm:w-[420px]
+              h-[78vh]
+              sm:h-[700px]
+              max-h-[700px]
+              rounded-[32px]
+              border border-white/10
+              bg-black/95
+              backdrop-blur-2xl
+              shadow-[0_0_60px_rgba(0,0,0,0.8)]
+              overflow-hidden
+              flex
+              flex-col
+            "
           >
             {/* HEADER */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#0b0b0b]">
+            <div className="flex items-center justify-between px-5 py-5 border-b border-white/10 bg-[#0B0B0B]">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#C8A15A] flex items-center justify-center">
-                  <Bot className="text-black" size={24} />
+                <div className="w-11 h-11 rounded-full bg-[#C8A15A] flex items-center justify-center">
+                  <Bot className="text-black" size={20} />
                 </div>
 
                 <div>
-                  <h3 className="text-white font-bold tracking-wide">
-                    HDM AI Concierge
-                  </h3>
+                  <h3 className="text-white font-semibold">HDM Concierge</h3>
 
                   <p className="text-green-400 text-xs">Online now</p>
                 </div>
@@ -132,105 +426,145 @@ export default function Concierge() {
 
               <button
                 onClick={() => setOpen(false)}
-                className="text-white/60 hover:text-white transition"
+                className="text-white/50 hover:text-white transition"
               >
-                <X size={24} />
+                <X size={22} />
               </button>
             </div>
 
             {/* CHAT BODY */}
-            <div className="flex-1 overflow-y-auto no-scrollbar px-5 py-6 space-y-5 h-[470px]">
-              {messages.map((msg, i) => (
+            <div
+              className="
+                flex-1
+                overflow-y-auto
+                px-4
+                py-5
+                space-y-5
+
+                scrollbar-thin
+                scrollbar-track-transparent
+                scrollbar-thumb-[#C8A15A]/30
+              "
+            >
+              {messages.map((msg, index) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    y: 10,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
                   className={`flex ${
                     msg.role === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-3xl px-5 py-4 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-[#C8A15A] text-black"
-                        : "bg-[#151515] text-white border border-white/10"
-                    }`}
+                    className={`
+                      max-w-[85%]
+                      rounded-[24px]
+                      px-4
+                      py-3
+                      text-sm
+                      leading-7
+
+                      ${
+                        msg.role === "user"
+                          ? "bg-[#C8A15A] text-black"
+                          : "bg-[#141414] text-white border border-white/10"
+                      }
+                    `}
                   >
                     {msg.text}
                   </div>
                 </motion.div>
               ))}
 
-              <div ref={messagesEndRef} />
-            </div>
+              {/* OPTIONS */}
+              <div className="space-y-3 pt-2">
+                {chat.options.map((option, index) => (
+                  <motion.button
+                    key={index}
+                    initial={{
+                      opacity: 0,
+                      y: 10,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.05,
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                    }}
+                    onClick={() => handleOptionClick(option)}
+                    className="
+                      w-full
+                      flex
+                      items-center
+                      justify-between
+                      gap-4
+                      rounded-2xl
+                      border border-white/10
+                      bg-[#121212]
+                      px-4
+                      py-4
+                      text-left
+                      hover:border-[#C8A15A]/40
+                      hover:bg-[#181818]
+                      transition-all
+                      duration-300
+                      group
+                    "
+                  >
+                    <span className="text-white/80 text-sm leading-6">
+                      {option.label}
+                    </span>
 
-            {/* QUICK ACTIONS */}
-            {/* QUICK ACTIONS */}
-            <div className="px-4 flex flex-wrap gap-3 pb-4">
-              {[
-                {
-                  label: "Pricing",
-                  value: "pricing",
-                },
-                {
-                  label: "Drone Coverage",
-                  value: "drone",
-                },
-                {
-                  label: "Booking",
-                  value: "booking",
-                },
-                {
-                  label: "Automotive",
-                  value: "automotive",
-                },
-              ].map((item) => (
+                    {option.consultation ? (
+                      <CalendarDays size={18} className="text-[#C8A15A]" />
+                    ) : (
+                      <ArrowRight
+                        size={18}
+                        className="
+                          text-[#C8A15A]
+                          group-hover:translate-x-1
+                          transition-transform
+                        "
+                      />
+                    )}
+                  </motion.button>
+                ))}
+
+                {/* HUMAN CTA */}
                 <button
-                  key={item.label}
-                  onClick={() => {
-                    const userMessage = {
-                      role: "user",
-                      text: item.label,
-                    };
-
-                    setMessages((prev) => [...prev, userMessage]);
-
-                    setTimeout(() => {
-                      setMessages((prev) => [
-                        ...prev,
-                        {
-                          role: "ai",
-                          text: aiResponses[item.value] || aiResponses.default,
-                        },
-                      ]);
-                    }, 700);
-                  }}
-                  className="px-4 py-2 rounded-full bg-[#151515] border border-white/10 text-white/70 text-xs hover:border-[#C8A15A]/40 hover:text-white transition-all"
+                  onClick={() => setOpenModal(true)}
+                  className="
+                    w-full
+                    mt-2
+                    rounded-2xl
+                    border border-[#C8A15A]/40
+                    bg-[#C8A15A]/10
+                    px-4
+                    py-4
+                    text-[#F5F2EC]
+                    text-sm
+                    font-medium
+                    flex
+                    items-center
+                    justify-center
+                    gap-3
+                    hover:bg-[#C8A15A]/20
+                    transition-all
+                  "
                 >
-                  {item.label}
+                  <Phone size={18} />
+                  Schedule Consultation
                 </button>
-              ))}
-            </div>
-
-            {/* INPUT */}
-            <div className="border-t border-white/10 p-4 bg-[#0b0b0b]">
-              <div className="flex items-center gap-3">
-                <input
-                  type="text"
-                  placeholder="Ask HDM AI..."
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                  className="flex-1 bg-[#151515] border border-white/10 rounded-full px-5 py-4 text-white outline-none focus:border-[#C8A15A]/50"
-                />
-
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  onClick={sendMessage}
-                  className="w-14 h-14 rounded-full bg-[#C8A15A] flex items-center justify-center text-black"
-                >
-                  <Send size={20} />
-                </motion.button>
               </div>
             </div>
           </motion.div>

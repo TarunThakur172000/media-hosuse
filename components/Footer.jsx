@@ -21,7 +21,7 @@ const links = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({ setOpenModal }) {
   return (
     <footer className="relative overflow-hidden bg-black border-t border-white/10">
       {/* TOP GLOW */}
@@ -54,7 +54,10 @@ export default function Footer() {
             </p>
 
             {/* CTA */}
-            <button className="group mt-10 bg-[#C8A15A] text-black px-8 py-5 rounded-full uppercase tracking-[0.18em] text-xs font-bold">
+            <button
+              onClick={() => setOpenModal(true)}
+              className="group mt-10 bg-[#C8A15A] text-black px-8 py-5 rounded-full uppercase tracking-[0.18em] text-xs font-bold"
+            >
               <span className="flex items-center gap-3">
                 Start A Project
                 <ArrowUpRight size={16} />

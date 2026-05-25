@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ setOpenModal }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -49,7 +49,6 @@ export default function Navbar() {
               alt="High Desert Media"
               width={180}
               height={60}
-              priority
               className="w-[140px] md:w-[180px] object-contain"
             />
           </motion.div>
@@ -74,7 +73,20 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
-              className="relative overflow-hidden border border-[#C8A15A]/50 px-7 py-3 rounded-full uppercase tracking-[0.18em] text-[11px] font-semibold text-[#F5F2EC] group"
+              onClick={() => setOpenModal(true)}
+              className="
+    relative
+    overflow-hidden
+    border border-[#C8A15A]/50
+    px-7 py-3
+    rounded-full
+    uppercase
+    tracking-[0.18em]
+    text-[11px]
+    font-semibold
+    text-[#F5F2EC]
+    group
+  "
             >
               <span className="absolute inset-0 bg-[#C8A15A] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
 
@@ -137,7 +149,20 @@ export default function Navbar() {
 
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className="mt-8 border border-[#C8A15A] px-8 py-4 rounded-full uppercase tracking-[0.2em] text-sm text-[#F5F2EC]"
+                onClick={() => {
+                  setOpenModal(true);
+                  setOpen(false);
+                }}
+                className="
+    mt-8
+    border border-[#C8A15A]
+    px-8 py-4
+    rounded-full
+    uppercase
+    tracking-[0.2em]
+    text-sm
+    text-[#F5F2EC]
+  "
               >
                 Book Strategy Call
               </motion.button>

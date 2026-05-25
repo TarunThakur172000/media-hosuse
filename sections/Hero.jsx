@@ -1,9 +1,9 @@
 "use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ setOpenModal }) {
   return (
     <section className="relative h-screen overflow-hidden flex items-center justify-center bg-black">
       {/* CINEMATIC VIDEO */}
@@ -63,8 +63,8 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.4 }}
             className="mt-10 max-w-2xl text-base md:text-xl text-white/70 leading-8 md:leading-9"
           >
-            Luxury media engineered for elite real estate, automotive brands,
-            and premium businesses seeking cinematic authority.
+            Luxury cinematic media for real estate brands, agents, developers,
+            and properties built to stand out.
           </motion.p>
 
           {/* BUTTONS */}
@@ -78,6 +78,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
+              onClick={() => setOpenModal(true)}
               className="group relative overflow-hidden bg-[#C8A15A] text-black px-9 py-5 rounded-full uppercase tracking-[0.2em] text-xs md:text-sm font-bold"
             >
               <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -86,13 +87,15 @@ export default function Hero() {
             </motion.button>
 
             {/* SECONDARY */}
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.96 }}
-              className="border border-white/20 hover:border-[#C8A15A] hover:bg-white/5 transition-all duration-500 text-[#F5F2EC] px-9 py-5 rounded-full uppercase tracking-[0.2em] text-xs md:text-sm font-semibold"
-            >
-              View Portfolio
-            </motion.button>
+            <Link href="/portfolio">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+                className="border border-white/20 hover:border-[#C8A15A] hover:bg-white/5 transition-all duration-500 text-[#F5F2EC] px-9 py-5 rounded-full uppercase tracking-[0.2em] text-xs md:text-sm font-semibold"
+              >
+                View Portfolio
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

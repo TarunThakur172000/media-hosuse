@@ -173,8 +173,8 @@ export default function Contact() {
               disabled={loading}
               className="group mt-8 bg-[#C8A15A] text-black px-8 py-5 rounded-full uppercase tracking-[0.18em] text-xs font-bold"
             >
-              <span className="flex items-center gap-3">
-                {loading ? "Submitting..." : "Submit Inquiry"}
+              <span className="flex items-center gap-3" id="custom_quote">
+                {loading ? "Submitting..." : "Request A Custom Quote"}
 
                 <ArrowUpRight size={16} />
               </span>

@@ -14,32 +14,32 @@ import {
 const services = [
   {
     title: "Luxury Real Estate",
-    desc: "Cinematic property visuals engineered to elevate perceived value and attract premium buyers.",
+    desc: "Cinematic real estate media crafted to elevate listings, attract attention, and create stronger buyer perception across every platform.",
     icon: Building2,
   },
   {
     title: "STR Media",
-    desc: "Luxury Airbnb and vacation rental content optimized for bookings and platform authority.",
+    desc: "High-end Airbnb and vacation rental content designed to increase booking appeal and make properties stand out instantly.",
     icon: Hotel,
   },
   {
     title: "Drone / Aerial",
-    desc: "FAA-compliant aerial cinematics delivering premium scale, perspective, and motion.",
+    desc: "Professional aerial cinematography capturing scale, architecture, location, and movement with a premium cinematic feel.",
     icon: Plane,
   },
   {
     title: "Automotive Cinematics",
-    desc: "Luxury automotive storytelling designed for dealerships, launches, and exotic brands.",
+    desc: "Luxury automotive visuals built for dealerships, collectors, launches, and brands that demand premium presentation.",
     icon: CarFront,
   },
   {
     title: "Branding Content",
-    desc: "Strategic content systems built to position brands with authority and prestige.",
+    desc: "Strategic visual storytelling designed to strengthen brand identity, build trust, and elevate digital presence.",
     icon: Clapperboard,
   },
   {
     title: "Social Media Reels",
-    desc: "Short-form cinematic edits engineered for engagement, reach, and premium perception.",
+    desc: "Short-form cinematic edits optimized for engagement, attention, and modern social media performance.",
     icon: Instagram,
   },
 ];
@@ -66,15 +66,11 @@ export default function Services() {
             </div>
 
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[1] tracking-[0.06em] text-[#F5F2EC] max-w-4xl">
-              Cinematic Media
-              <br />
-              Built For
+              CINEMATIC MEDIA For
               <span className="text-[#C8A15A] italic font-medium normal-case tracking-normal">
                 {" "}
-                Premium
+                MODERN BRAND
               </span>
-              <br />
-              Brand Authority.
             </h2>
           </div>
 
