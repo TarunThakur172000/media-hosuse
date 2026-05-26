@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-
+import StrategyCallModal from "../../../sections/StrategyCallModal";
 const projects = [
   {
     image:
@@ -40,7 +40,7 @@ const projects = [
 
 export default function AutomotivePortfolio() {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [openModal, setOpenModal] = useState(false);
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-[#F5F2EC]">
       {/* FLOATING STICKY CTA */}
@@ -49,6 +49,7 @@ export default function AutomotivePortfolio() {
           opacity: 0,
           y: 40,
         }}
+        onClick={() => setOpenModal(true)}
         animate={{
           opacity: 1,
           y: 0,
@@ -69,7 +70,7 @@ export default function AutomotivePortfolio() {
     bottom-6
     right-6
     z-50
-
+    cursor-pointer
     px-7
     py-4
 
@@ -430,6 +431,7 @@ export default function AutomotivePortfolio() {
           </motion.div>
         )}
       </AnimatePresence>
+      <StrategyCallModal open={openModal} setOpen={setOpenModal} />
     </main>
   );
 }
