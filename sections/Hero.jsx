@@ -37,11 +37,11 @@ export default function Hero({ setOpenModal }) {
             transition={{ duration: 1 }}
             className="flex items-center gap-4 mb-8"
           >
-            <div className="w-12 h-[1px] bg-[#C8A15A]" />
+            {/* <div className="w-12 h-[1px] bg-[#C8A15A]" /> */}
 
-            <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-xs md:text-sm">
+            {/* <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-xs md:text-sm">
               HIGH DESERT MEDIA
-            </p>
+            </p> */}
           </motion.div>
 
           {/* MAIN TITLE */}

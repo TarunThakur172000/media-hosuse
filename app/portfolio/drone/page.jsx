@@ -126,19 +126,19 @@ export default function dronePortfolio() {
                 className="max-w-4xl"
               >
                 <p className="uppercase tracking-[0.45em] text-[#C8A15A] text-xs mb-6">
-                  Automotive Portfolio
+                  Aerial Drone Portfolio
                 </p>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.92]">
-                  Performance
+                  Aerial
                   <br />
                   Cinematics
                 </h1>
 
                 <p className="mt-8 text-white/50 leading-8 max-w-2xl text-sm md:text-base">
-                  Crafted for premium automotive brands seeking cinematic
-                  storytelling, emotional depth, and visually powerful brand
-                  perception.
+                  Capturing breathtaking aerial perspectives with cinematic
+                  drone visuals dynamic motion and immersive storytelling from
+                  above.
                 </p>
               </motion.div>
 
@@ -298,7 +298,7 @@ export default function dronePortfolio() {
                 {/* CONTENT */}
                 <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20">
                   <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-xs mb-5">
-                    Automotive Cinema
+                    Aerial Cinema
                   </p>
 
                   <h2 className="text-3xl md:text-6xl font-black uppercase leading-none max-w-2xl text-white">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import StrategyCallModal from "../../../sections/StrategyCallModal";
 const projects = [
   {
     image:
@@ -40,7 +41,7 @@ const projects = [
 
 export default function realestatePortfolio() {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [openModal, setOpenModal] = useState(false);
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-[#F5F2EC]">
       {/* FLOATING STICKY CTA */}
@@ -49,6 +50,7 @@ export default function realestatePortfolio() {
           opacity: 0,
           y: 40,
         }}
+        onClick={() => setOpenModal(true)}
         animate={{
           opacity: 1,
           y: 0,
@@ -69,7 +71,7 @@ export default function realestatePortfolio() {
     bottom-6
     right-6
     z-50
-
+    cursor-pointer
     px-7
     py-4
 
@@ -126,19 +128,19 @@ export default function realestatePortfolio() {
                 className="max-w-4xl"
               >
                 <p className="uppercase tracking-[0.45em] text-[#C8A15A] text-xs mb-6">
-                  Automotive Portfolio
+                  Real Estate Portfolio
                 </p>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.92]">
-                  Performance
+                  Luxury
                   <br />
-                  Cinematics
+                  Real Estate
                 </h1>
 
                 <p className="mt-8 text-white/50 leading-8 max-w-2xl text-sm md:text-base">
-                  Crafted for premium automotive brands seeking cinematic
-                  storytelling, emotional depth, and visually powerful brand
-                  perception.
+                  Showcasing premium properties through cinematic visuals
+                  stunning architecture photography and emotionally driven real
+                  estate storytelling.
                 </p>
               </motion.div>
 
@@ -298,7 +300,7 @@ export default function realestatePortfolio() {
                 {/* CONTENT */}
                 <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20">
                   <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-xs mb-5">
-                    Automotive Cinema
+                    Real Estate Cinema
                   </p>
 
                   <h2 className="text-3xl md:text-6xl font-black uppercase leading-none max-w-2xl text-white">
@@ -430,6 +432,7 @@ export default function realestatePortfolio() {
           </motion.div>
         )}
       </AnimatePresence>
+      <StrategyCallModal open={openModal} setOpen={setOpenModal} />
     </main>
   );
 }

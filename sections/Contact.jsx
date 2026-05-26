@@ -275,10 +275,6 @@ export default function Contact() {
             {/* CONTENT */}
             <div className="p-8 md:p-10 flex-1 flex flex-col justify-between">
               <div>
-                <p className="uppercase tracking-[0.3em] text-[#C8A15A] text-[10px] mb-5">
-                  HIGH DESERT MEDIA
-                </p>
-
                 <p className="text-white/60 leading-8 text-sm md:text-base">
                   Cinematic visual systems crafted for luxury real estate,
                   automotive brands, and premium digital presence.
@@ -297,7 +293,7 @@ export default function Contact() {
                       </p>
 
                       <p className="text-white/70 text-sm">
-                        hello@highdesertmedia.com
+                        info@highdesertmediaaz.com
                       </p>
                     </div>
                   </div>
@@ -312,7 +308,7 @@ export default function Contact() {
                         Phone
                       </p>
 
-                      <p className="text-white/70 text-sm">+1 (555) 000-0000</p>
+                      <p className="text-white/70 text-sm">(480) 401-2316</p>
                     </div>
                   </div>
 
@@ -327,7 +323,7 @@ export default function Contact() {
                       </p>
 
                       <p className="text-white/70 text-sm">
-                        Florida, United States
+                        Queen Creek, AZ, USA
                       </p>
                     </div>
                   </div>

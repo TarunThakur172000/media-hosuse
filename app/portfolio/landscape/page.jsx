@@ -9,32 +9,32 @@ const projects = [
   {
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2000&auto=format&fit=crop",
-    title: "Cinematic Mountain Vista",
+    title: "Sedona Red Rock Cinematics",
   },
   {
     image:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop",
-    title: "Golden Forest Landscape",
+    title: "Sonoran Desert Storytelling",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2000&auto=format&fit=crop",
-    title: "Luxury Nature Storytelling",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop",
-    title: "Immersive Wilderness Cinematics",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop",
-    title: "Epic Horizon Visuals",
+      "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2000&auto=format&fit=crop",
+    title: "Arizona Cactus Landscapes",
   },
   {
     image:
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000&auto=format&fit=crop",
-    title: "Atmospheric Landscape Experience",
+    title: "Southwest Desert Horizons",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop",
+    title: "Golden Canyon Visuals",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop",
+    title: "Epic Arizona Wilderness",
   },
 ];
 
@@ -126,19 +126,19 @@ export default function landscapePortfolio() {
                 className="max-w-4xl"
               >
                 <p className="uppercase tracking-[0.45em] text-[#C8A15A] text-xs mb-6">
-                  Automotive Portfolio
+                  Landscape Portfolio
                 </p>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.92]">
-                  Performance
+                  Desert
                   <br />
                   Cinematics
                 </h1>
 
                 <p className="mt-8 text-white/50 leading-8 max-w-2xl text-sm md:text-base">
-                  Crafted for premium automotive brands seeking cinematic
-                  storytelling, emotional depth, and visually powerful brand
-                  perception.
+                  Capturing the raw beauty of Arizona through cinematic desert
+                  visuals dramatic red rock landscapes and immersive southwest
+                  storytelling.
                 </p>
               </motion.div>
 
@@ -298,7 +298,7 @@ export default function landscapePortfolio() {
                 {/* CONTENT */}
                 <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20">
                   <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-xs mb-5">
-                    Automotive Cinema
+                    Landscape Cinema
                   </p>
 
                   <h2 className="text-3xl md:text-6xl font-black uppercase leading-none max-w-2xl text-white">
