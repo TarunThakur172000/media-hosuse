@@ -10,12 +10,12 @@ const portfolio = [
     title: "Modern Architectural Estate",
   },
   {
-    image: "/images/p2.jpg",
+    image: "/images/p3.jpg",
     category: "Automotive",
     title: "Exotic Performance Cinematics",
   },
   {
-    image: "/images/p3.jpg",
+    image: "/images/p2.jpg",
     category: "Luxury Branding",
     title: "Premium Brand Positioning",
   },
