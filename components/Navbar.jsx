@@ -37,19 +37,41 @@ export default function Navbar({ setOpenModal }) {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-5">
+        <motion.div
+          animate={{
+            paddingTop: scrolled ? 8 : 20,
+            paddingBottom: scrolled ? 10 : 20,
+          }}
+          transition={{
+            duration: 0.35,
+            ease: "easeInOut",
+          }}
+          className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10"
+        >
           {/* LOGO */}
 
           <motion.div
             whileHover={{ scale: 1.03 }}
-            className="cursor-pointer flex items-center"
+            className="cursor-pointer flex items-center flex-shrink-0"
           >
-            <img
+            <motion.img
               src="/images/logo.webp"
               alt="High Desert Media"
-              width={180}
-              height={60}
-              className="w-[140px] md:w-[180px] object-contain"
+              initial={false}
+              animate={{
+                width: scrolled ? 100 : 180,
+              }}
+              transition={{
+                duration: 0.35,
+                ease: "easeInOut",
+              }}
+              className="
+      w-[140px]
+      md:w-[180px]
+      h-auto
+      object-contain
+      max-w-full
+    "
             />
           </motion.div>
 
@@ -103,7 +125,7 @@ export default function Navbar({ setOpenModal }) {
           >
             <Menu size={28} />
           </button>
-        </div>
+        </motion.div>
       </motion.nav>
 
       {/* MOBILE MENU */}

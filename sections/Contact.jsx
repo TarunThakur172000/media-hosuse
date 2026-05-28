@@ -8,8 +8,8 @@ export default function Contact() {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
-    serviceType: "",
-    message: "",
+    projectType: "",
+    details: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function Contact() {
     e.preventDefault();
 
     // VALIDATION
-    if (!form.fullName || !form.email || !form.serviceType) {
+    if (!form.fullName || !form.email || !form.projectType) {
       alert("Please fill all required fields.");
       return;
     }
@@ -48,7 +48,7 @@ export default function Contact() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Something went wrong");
+        throw new Error(data.details || "Something went wrong");
       }
 
       // SUCCESS
@@ -58,8 +58,8 @@ export default function Contact() {
       setForm({
         fullName: "",
         email: "",
-        serviceType: "",
-        message: "",
+        projectType: "",
+        details: "",
       });
 
       // HIDE SUCCESS
@@ -69,7 +69,7 @@ export default function Contact() {
     } catch (error) {
       console.error(error);
 
-      alert(error.message || "Failed to submit custom quote request.");
+      alert(error.details || "Failed to submit custom quote request.");
     } finally {
       setLoading(false);
     }
@@ -164,8 +164,8 @@ export default function Contact() {
               </label>
 
               <select
-                name="serviceType"
-                value={form.serviceType}
+                name="projectType"
+                value={form.projectType}
                 onChange={handleChange}
                 required
                 className="w-full bg-black border border-white/10 rounded-2xl px-5 py-5 text-white outline-none focus:border-[#C8A15A]/40 transition-all duration-500"
@@ -184,7 +184,7 @@ export default function Contact() {
               </select>
             </div>
 
-            {/* MESSAGE */}
+            {/* details */}
             <div className="mt-6">
               <label className="block text-[11px] uppercase tracking-[0.25em] text-white/40 mb-4">
                 Project Details
@@ -192,8 +192,8 @@ export default function Contact() {
 
               <textarea
                 rows="7"
-                name="message"
-                value={form.message}
+                name="details"
+                value={form.details}
                 onChange={handleChange}
                 required
                 placeholder="Tell us about your project..."
