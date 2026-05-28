@@ -43,7 +43,7 @@ export async function POST(req) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
 
-      to: process.env.EMAIL_USER,
+      to: "steven@highdesertmediaaz.com",
 
       subject: "New Custom Quote Request",
 
