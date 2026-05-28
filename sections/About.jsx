@@ -49,7 +49,7 @@ export default function About() {
           {/* MAIN IMAGE */}
           <div className="relative overflow-hidden rounded-[2.5rem]">
             <img
-              src="/images/founder.png"
+              src="/images/founder.webp"
               alt="HIGH DESERT MEDIA"
               className="w-full h-[780px] object-cover hover:scale-105 transition-transform duration-[1800ms]"
             />

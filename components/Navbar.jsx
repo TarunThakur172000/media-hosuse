@@ -45,7 +45,7 @@ export default function Navbar({ setOpenModal }) {
             className="cursor-pointer flex items-center"
           >
             <img
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="High Desert Media"
               width={180}
               height={60}

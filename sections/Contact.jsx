@@ -264,7 +264,7 @@ export default function Contact() {
             {/* IMAGE */}
             <div className="relative h-[320px]">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Luxury Media"
                 className="absolute inset-0 w-full h-full object-cover"
               />
