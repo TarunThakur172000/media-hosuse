@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import {
   Building2,
   Hotel,
-  Plane,
+  Drone,
   CarFront,
   Clapperboard,
-  Instagram,
   ArrowUpRight,
 } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 
 const services = [
   {
@@ -25,7 +25,7 @@ const services = [
   {
     title: "Drone / Aerial",
     desc: "Professional aerial cinematography capturing scale, architecture, location, and movement with a premium cinematic feel.",
-    icon: Plane,
+    icon: Drone,
   },
   {
     title: "Automotive Cinematics",
@@ -40,7 +40,7 @@ const services = [
   {
     title: "Social Media Reels",
     desc: "Short-form cinematic edits optimized for engagement, attention, and modern social media performance.",
-    icon: Instagram,
+    icon: FaInstagram,
   },
 ];
 

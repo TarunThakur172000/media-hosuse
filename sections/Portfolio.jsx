@@ -5,22 +5,22 @@ import { ArrowUpRight } from "lucide-react";
 
 const portfolio = [
   {
-    image: "/images/p1.jpg",
+    image: "https://ibb.co/pv73x4C2",
     category: "Luxury Real Estate",
     title: "Modern Architectural Estate",
   },
   {
-    image: "/images/p2.jpg",
+    image: "https://ibb.co/CKn52SXB",
     category: "Automotive",
     title: "Exotic Performance Cinematics",
   },
   {
-    image: "/images/p3.jpg",
+    image: "https://ibb.co/3Q0Nc89",
     category: "Luxury Branding",
     title: "Premium Brand Positioning",
   },
   {
-    image: "/images/p4.jpg",
+    image: "https://ibb.co/6JLwg8zJ",
     category: "Aerial Cinematics",
     title: "Drone Visual Storytelling",
   },

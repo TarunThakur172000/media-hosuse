@@ -1,7 +1,7 @@
 "use client";
 
-import { Instagram, Linkedin, Youtube, ArrowUpRight } from "lucide-react";
-
+import { ArrowUpRight } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 const links = [
   {
     title: "About",
@@ -94,17 +94,17 @@ export default function Footer({ setOpenModal }) {
 
               <div className="flex flex-col gap-5">
                 <a className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
-                  <Instagram size={16} />
+                  <FaInstagram size={20} />
                   Instagram
                 </a>
 
                 <a className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
-                  <Youtube size={16} />
+                  <FaYoutube size={20} />
                   YouTube
                 </a>
 
                 <a className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
-                  <Linkedin size={16} />
+                  <FaLinkedin size={20} />
                   LinkedIn
                 </a>
               </div>
