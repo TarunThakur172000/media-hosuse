@@ -45,7 +45,7 @@ export async function POST(req) {
 
       to: "steven@highdesertmediaaz.com",
 
-      subject: "New Custom Quote Request",
+      subject: `New Custom Quote Request from ${fullname}  ${new Date().toLocaleString()}`,
 
       html: `
 <div style="

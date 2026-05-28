@@ -21,7 +21,8 @@ export async function POST(req) {
 
       to: "steven@highdesertmediaaz.com ",
 
-      subject: "New Strategy Call Lead",
+      subject:
+        "New Strategy Call Lead from ${fullname} ${new Date().toLocaleString()}",
 
       html: `
 <div style="
