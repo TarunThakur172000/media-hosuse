@@ -324,6 +324,7 @@ export default function StrategyCallModal({ open, setOpen }) {
 
                       <select
                         value={service}
+                        aria-label="Select Service"
                         onChange={(e) => setService(e.target.value)}
                         className="
         w-full
@@ -366,6 +367,7 @@ export default function StrategyCallModal({ open, setOpen }) {
                         />
 
                         <select
+                          aria-label="Select Budget"
                           value={budget}
                           onChange={(e) => setBudget(e.target.value)}
                           className="
@@ -429,6 +431,7 @@ export default function StrategyCallModal({ open, setOpen }) {
                         </label>
 
                         <select
+                          aria-label="Select Timezone"
                           value={timezone}
                           onChange={(e) => setTimezone(e.target.value)}
                           className="
@@ -471,6 +474,7 @@ export default function StrategyCallModal({ open, setOpen }) {
                       </label>
 
                       <select
+                        aria-label="Select Time"
                         value={callWindow}
                         onChange={(e) => setCallWindow(e.target.value)}
                         className="
