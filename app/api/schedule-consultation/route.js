@@ -19,10 +19,9 @@ export async function POST(req) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
 
-      to: "steven@highdesertmediaaz.com ",
+      to: process.env.EMAIL_USER,
 
-      subject:
-        "New Strategy Call Lead from ${fullname} ${new Date().toLocaleString()}",
+      subject: `New Strategy Call Lead from  ${body.fullName} ${new Date().toLocaleString()}`,
 
       html: `
 <div style="
