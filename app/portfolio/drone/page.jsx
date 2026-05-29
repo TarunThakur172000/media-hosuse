@@ -14,8 +14,8 @@ const projects = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2000&auto=format&fit=crop",
-    title: "Luxury Coastal Drone Shot",
+      "https://lh3.googleusercontent.com/d/1NnyxP-LdM-lyNCE2W7mFu5oEIyUVY1N1",
+    title: "Kinetic Cityscapes",
   },
   {
     image:
@@ -24,13 +24,8 @@ const projects = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1W__iITI2Uta1XjtERHyD-w8DWYFwnFCT",
     title: "High Altitude Landscape Visuals",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2000&auto=format&fit=crop",
-    title: "Immersive Wilderness Aerial",
   },
   {
     image:

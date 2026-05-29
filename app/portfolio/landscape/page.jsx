@@ -14,27 +14,27 @@ const projects = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1zLzmDCr0MFqWQ9XaybQS2d_OVoX3THb4",
     title: "Sonoran Desert Storytelling",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1h_-GypPxIFsCZLJYQaCBigo-g_CWLIZp",
     title: "Arizona Cactus Landscapes",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1W0Sh74ECRGLDvR7ehxM5V1bdUEzqtRlA",
     title: "Southwest Desert Horizons",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop",
-    title: "Golden Canyon Visuals",
+      "https://lh3.googleusercontent.com/d/1yBspSNOUi-njhMYiGgeL1MFtx20hJLXt",
+    title: "Grand Canyon Visuals",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1twbwk6TbVGOVtIqFfkb-KTOqdIj5unyA",
     title: "Epic Arizona Wilderness",
   },
 ];

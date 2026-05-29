@@ -8,23 +8,23 @@ import StrategyCallModal from "../../../sections/StrategyCallModal";
 const projects = [
   {
     image:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1o6Yn769aildeG6bjw1SGx3EaDjdFZnYg",
     title: "Luxury Performance Coupe",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000&auto=format&fit=crop",
-    title: "Midnight Supercar Cinematics",
+      "https://lh3.googleusercontent.com/d/1iqeS2S4aJABZxj_9SGSkQ62f3Ulsf24e",
+    title: "Supercar Cinematics",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2000&auto=format&fit=crop",
+      "https://lh3.googleusercontent.com/d/1jWLwX0sirBJcvM6-AXH8vyRi-Jy3yx26",
     title: "Exotic Automotive Storytelling",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=2000&auto=format&fit=crop",
-    title: "Luxury Motion Sequence",
+      "https://lh3.googleusercontent.com/d/1bwF3-gxiipC73akKUqVlyAyMLms9w8oP",
+    title: "Velocity",
   },
   {
     image:
