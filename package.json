@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^5.0.4",
     "axios": "^1.16.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",

@@ -6,7 +6,7 @@ import connectDB from "../../../lib/mongodb";
 
 import CustomQuote from "../../../models/CustomQuote";
 
-import transporter from "../../../lib/mail";
+import { sendEmail } from "../../../lib/brevo";
 
 export async function POST(req) {
   try {
@@ -31,23 +31,7 @@ export async function POST(req) {
       );
     }
 
-    // SAVE TO DATABASE
-    const quote = await CustomQuote.create({
-      fullName,
-      email,
-      projectType,
-      details,
-    });
-
-    // SEND EMAIL
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-
-      to: "steven@highdesertmediaaz.com",
-
-      subject: `New Custom Quote Request from ${fullName}  ${new Date().toLocaleString()}`,
-
-      html: `
+    const emailHtml = `
 <div style="
   background:#F4F1EA;
   padding:50px 20px;
@@ -233,7 +217,25 @@ export async function POST(req) {
 
   </div>
 </div>
-`,
+`;
+
+    // SAVE TO DATABASE
+    const quote = await CustomQuote.create({
+      fullName,
+      email,
+      projectType,
+      details,
+    });
+
+    // SEND EMAIL
+    await sendEmail({
+      to: "steven@highdesertmediaaz.com",
+
+      subject: `New Strategy Call Lead from ${fullName} ${new Date().toLocaleString()}`,
+
+      htmlContent: emailHtml,
+
+      replyTo: email,
     });
 
     return NextResponse.json(
