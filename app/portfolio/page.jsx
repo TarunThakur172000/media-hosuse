@@ -55,12 +55,12 @@ export default function Premium3DPortfolio() {
     mass: 0.8,
   });
 
-  const rotateY = useTransform(smoothProgress, [0, 1], [0, -270]);
+  const rotateY = useTransform(smoothProgress, [0, 1], [100, -370]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-black pt-[20vh]"
+      className="relative bg-black pt-[30vh]"
       style={{
         height: "320vh",
       }}
@@ -136,12 +136,12 @@ export default function Premium3DPortfolio() {
         </Link>
       </motion.div>
       {/* STICKY CONTAINER */}
-      <div className="sticky top-0 h-screen overflow-visible flex items-center justify-center">
+      <div className="sticky top-0 h-screen overflow-visible flex items-center justify-start md:justify-center">
         {/* BACKGROUND */}
         <div className="absolute inset-0 bg-black" />
 
         {/* GOLD AMBIENT */}
-        <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C8A15A]/10 blur-[160px]" />
+        <div className="absolute left-1/2 top-1/2 w-full md:w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C8A15A]/10 blur-[160px]" />
 
         {/* NOISE */}
         <div className="absolute inset-0 opacity-[0.03] mix-blend-soft-light bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -179,7 +179,7 @@ export default function Premium3DPortfolio() {
               transition={{
                 duration: 1,
               }}
-              className="text-5xl md:text-7xl font-black uppercase leading-[0.9] text-white"
+              className="text-2xl md:text-7xl font-black uppercase leading-[0.9] text-white"
             >
               Cinematic
               <br />
@@ -259,8 +259,10 @@ export default function Premium3DPortfolio() {
               style={{
                 rotateY,
                 transformStyle: "preserve-3d",
+                WebkitTransformStyle: "preserve-3d",
+                overflow: "visible",
               }}
-              className="relative w-[900px] h-[650px]"
+              className="relative w-full md:w-[900px] mx-auto h-[100vh]"
             >
               {categories.map((item, index) => {
                 const angle = index * 90;
@@ -268,74 +270,81 @@ export default function Premium3DPortfolio() {
                 return (
                   <div
                     key={item.title}
-                    className="absolute left-1/2 top-1/2"
+                    className="absolute left-1/2 top-1/3"
                     style={{
                       transform: `
                         translate(-50%, -50%)
                         rotateY(${angle}deg)
                         translateZ(360px)
                       `,
-                      transformStyle: "preserve-3d",
                     }}
                   >
                     <Link href={`/portfolio/${item.slug}`}>
                       {/* CARD */}
                       <motion.div
                         whileHover={{
+                          scale: 1.05,
                           y: -12,
-                          scale: 1.035,
                         }}
                         transition={{
                           duration: 0.45,
                           ease: "easeOut",
                         }}
                         className="
-                          group
-                          relative
-                          w-[280px]
-                          md:w-[320px]
-                          h-[420px]
-                          rounded-[2rem]
-                          overflow-visible
-                          cursor-pointer
-                          will-change-transform
-                          hover:z-50
-                        "
+    group
+    relative
+
+    w-[72vw]
+    max-w-[320px]
+    min-w-[220px]
+
+    h-[320px]
+    sm:h-[380px]
+    md:h-[420px]
+
+    rounded-[2rem]
+    overflow-visible
+    cursor-pointer
+    will-change-transform
+
+    hover:z-[999]
+  "
                         style={{
                           backfaceVisibility: "hidden",
                           WebkitBackfaceVisibility: "hidden",
                           transformStyle: "preserve-3d",
+                          WebkitTransformStyle: "preserve-3d",
                           transformPerspective: 2000,
                         }}
                       >
                         {/* MAIN CARD */}
                         <div
                           className="
-                            relative
-                            w-full
-                            h-full
-                            rounded-[2rem]
-                            overflow-hidden
-                            border border-white/10
-                            bg-black
-                          "
+      relative
+      w-full
+      h-full
+      rounded-[2rem]
+      overflow-hidden
+      border border-white/10
+      bg-black
+    "
                         >
                           {/* IMAGE */}
                           <img
                             src={item.image}
                             alt={item.title}
                             className="
-                              absolute
-                              inset-0
-                              w-full
-                              h-full
-                              object-cover
-                              scale-100
-                              group-hover:scale-110
-                              transition-transform
-                              duration-[2200ms]
-                              ease-out
-                            "
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        scale-100
+        group-hover:scale-110
+        transition-transform
+        duration-[2200ms]
+        ease-out
+      "
                           />
 
                           {/* OVERLAY */}
@@ -344,35 +353,45 @@ export default function Premium3DPortfolio() {
                           {/* GOLD LIGHT */}
                           <div
                             className="
-                              absolute
-                              inset-0
-                              opacity-0
-                              group-hover:opacity-100
-                              transition-opacity
-                              duration-700
-                              bg-[radial-gradient(circle_at_top,rgba(200,161,90,0.28),transparent_60%)]
-                            "
+        absolute
+        inset-0
+        opacity-0
+        group-hover:opacity-100
+        transition-opacity
+        duration-700
+        bg-[radial-gradient(circle_at_top,rgba(200,161,90,0.28),transparent_60%)]
+      "
                           />
 
                           {/* GLASS SHINE */}
                           <div
                             className="
-                              absolute
-                              inset-0
-                              opacity-0
-                              group-hover:opacity-100
-                              transition-opacity
-                              duration-700
-                              bg-gradient-to-br
-                              from-white/[0.14]
-                              via-transparent
-                              to-transparent
-                            "
+        absolute
+        inset-0
+        opacity-0
+        group-hover:opacity-100
+        transition-opacity
+        duration-700
+        bg-gradient-to-br
+        from-white/[0.14]
+        via-transparent
+        to-transparent
+      "
                           />
 
                           {/* CONTENT */}
                           <motion.div
-                            className="absolute bottom-0 left-0 p-7 z-20"
+                            className="
+        absolute
+        bottom-0
+        left-0
+
+        p-4
+        sm:p-5
+        md:p-7
+
+        z-20
+      "
                             whileHover={{
                               y: -4,
                             }}
@@ -380,29 +399,92 @@ export default function Premium3DPortfolio() {
                               duration: 0.4,
                             }}
                           >
-                            <p className="uppercase tracking-[0.35em] text-[#C8A15A] text-[10px] mb-3">
+                            <p
+                              className="
+          uppercase
+          tracking-[0.2em]
+          sm:tracking-[0.3em]
+          md:tracking-[0.35em]
+
+          text-[#C8A15A]
+
+          text-[8px]
+          sm:text-[9px]
+          md:text-[10px]
+
+          mb-2
+          md:mb-3
+        "
+                            >
                               {item.subtitle}
                             </p>
 
-                            <h2 className="text-3xl font-black uppercase text-white mb-4">
+                            <h2
+                              className="
+          font-black
+          uppercase
+          text-white
+
+          text-lg
+          sm:text-2xl
+          md:text-3xl
+
+          mb-2
+          md:mb-4
+        "
+                            >
                               {item.title}
                             </h2>
 
-                            <p className="text-white/55 text-sm leading-6 max-w-[240px]">
+                            <p
+                              className="
+          text-white/55
+
+          text-[11px]
+          sm:text-xs
+          md:text-sm
+
+          leading-4
+          sm:leading-5
+          md:leading-6
+
+          max-w-[140px]
+          sm:max-w-[180px]
+          md:max-w-[240px]
+        "
+                            >
                               {item.desc}
                             </p>
 
-                            {/* BUTTON */}
-                            <div className="mt-6 flex items-center gap-2 text-[#C8A15A] uppercase tracking-[0.25em] text-[10px]">
+                            <div
+                              className="
+          mt-3
+          md:mt-6
+
+          flex
+          items-center
+          gap-2
+
+          text-[#C8A15A]
+          uppercase
+
+          tracking-[0.15em]
+          md:tracking-[0.25em]
+
+          text-[8px]
+          sm:text-[9px]
+          md:text-[10px]
+        "
+                            >
                               Explore Work
                               <ArrowUpRight
                                 size={14}
                                 className="
-                                  group-hover:rotate-45
-                                  group-hover:translate-x-1
-                                  transition-all
-                                  duration-500
-                                "
+            group-hover:rotate-45
+            group-hover:translate-x-1
+            transition-all
+            duration-500
+          "
                               />
                             </div>
                           </motion.div>
@@ -410,60 +492,60 @@ export default function Premium3DPortfolio() {
                           {/* PREMIUM BORDER */}
                           <div
                             className="
-                              absolute
-                              inset-0
-                              rounded-[2rem]
-                              border
-                              border-white/10
-                              group-hover:border-[#C8A15A]/50
-                              transition-all
-                              duration-700
-                            "
+        absolute
+        inset-0
+        rounded-[2rem]
+        border
+        border-white/10
+        group-hover:border-[#C8A15A]/50
+        transition-all
+        duration-700
+      "
                           />
 
                           {/* BOTTOM GOLD LINE */}
                           <div
                             className="
-                              absolute
-                              bottom-0
-                              left-0
-                              h-[2px]
-                              w-0
-                              bg-[#C8A15A]
-                              group-hover:w-full
-                              transition-all
-                              duration-700
-                            "
+        absolute
+        bottom-0
+        left-0
+        h-[2px]
+        w-0
+        bg-[#C8A15A]
+        group-hover:w-full
+        transition-all
+        duration-700
+      "
                           />
                         </div>
 
                         {/* SHADOW */}
                         <div
                           className="
-                            absolute
-                            inset-0
-                            rounded-[2rem]
-                            pointer-events-none
-                            shadow-[0_20px_60px_rgba(0,0,0,0.45)]
-                            group-hover:shadow-[0_40px_120px_rgba(0,0,0,0.9)]
-                            transition-all
-                            duration-700
-                          "
+      absolute
+      inset-0
+      rounded-[2rem]
+      pointer-events-none
+      shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+      group-hover:shadow-[0_40px_120px_rgba(0,0,0,0.9)]
+      transition-all
+      duration-700
+    "
                         />
 
                         {/* GOLD OUTER GLOW */}
                         <div
                           className="
-                            absolute
-                            -inset-[1px]
-                            rounded-[2rem]
-                            opacity-0
-                            pointer-events-none
-                            group-hover:opacity-100
-                            transition-opacity
-                            duration-700
-                            shadow-[0_0_80px_rgba(200,161,90,0.28)]
-                          "
+      absolute
+      -inset-[1px]
+      rounded-[2rem]
+      opacity-0
+      pointer-events-none
+      group-hover:opacity-100
+      transition-opacity
+      duration-700
+      shadow-[0_0_80px_rgba(200,161,90,0.28)]
+    "
                         />
                       </motion.div>
                     </Link>
