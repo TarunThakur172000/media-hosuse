@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -311,6 +312,29 @@ export default function Contact() {
                       <p className="text-white/70 text-sm">(480) 401-2316</p>
                     </div>
                   </div>
+
+                  <div className="flex items-center gap-4">
+  <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center">
+    <FaInstagram size={18} className="text-[#C8A15A]" />
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[0.2em] text-[10px] text-white/35 mb-2">
+      Instagram
+    </p>
+
+    <a
+      href="https://www.instagram.com/highdesertmediaaz/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white/70 text-sm hover:text-[#C8A15A] transition-colors"
+    >
+      @highdesertmediaaz
+    </a>
+  </div>
+</div>
+
+                  
 
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center">
