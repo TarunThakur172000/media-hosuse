@@ -93,10 +93,15 @@ export default function Footer({ setOpenModal }) {
               </p>
 
               <div className="flex flex-col gap-5">
-                <a className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
-                  <FaInstagram size={20} />
-                  Instagram
-                </a>
+              <a
+  href="https://www.instagram.com/highdesertmediaaz/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]"
+>
+  <FaInstagram size={20} />
+  Instagram
+</a>
 
                 <a className="flex items-center gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
                   <FaYoutube size={20} />
