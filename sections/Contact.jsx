@@ -293,7 +293,7 @@ export default function Contact() {
                         Email
                       </p>
 
-                      <p className="text-white/70 text-sm">
+                      <p className="text-white/70 text-sm hover:text-[#C8A15A] transition-colors">
                         info@highdesertmediaaz.com
                       </p>
                     </div>
@@ -309,7 +309,7 @@ export default function Contact() {
                         Phone
                       </p>
 
-                      <p className="text-white/70 text-sm">(480) 401-2316</p>
+                      <p className="text-white/70 text-sm hover:text-[#C8A15A] transition-colors">(480) 401-2316</p>
                     </div>
                   </div>
 
@@ -346,7 +346,7 @@ export default function Contact() {
                         Location
                       </p>
 
-                      <p className="text-white/70 text-sm">
+                      <p className="text-white/70 text-sm hover:text-[#C8A15A] transition-colors">
                         Queen Creek, AZ, USA
                       </p>
                     </div>
