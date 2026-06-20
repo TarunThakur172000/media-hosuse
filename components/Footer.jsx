@@ -103,7 +103,7 @@ export default function Footer({ setOpenModal }) {
   Instagram
 </a>
 
-                <a href="https://www.youtube.com/@HighDesertMediaAZ" className="flex items-center pointer gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
+                <a href="https://www.youtube.com/@HighDesertMediaAZ" target="_blank" className="flex items-center pointer gap-3 text-white/60 hover:text-[#F5F2EC] transition-all duration-300 text-sm uppercase tracking-[0.12em]">
                   <FaYoutube size={20} />
                   YouTube
                 </a>
