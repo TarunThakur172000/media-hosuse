@@ -299,7 +299,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center">
                       <Phone size={18} className="text-[#C8A15A]" />
                     </div>
@@ -311,7 +311,7 @@ export default function Contact() {
 
                       <p className="text-white/70 text-sm hover:text-[#C8A15A] transition-colors">(480) 401-2316</p>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="flex items-center gap-4">
   <div className="w-12 h-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center">
